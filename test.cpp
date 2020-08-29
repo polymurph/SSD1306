@@ -38,7 +38,7 @@ int main(void)
 	wiringPiI2CWriteReg8(i2c_handle, 0x00, 0xAE);
 	
 
-	static SSD1306 display(i2c_write_reg8);
+	static SSD1306 display(SSD1306::SIZE_128x64, i2c_write_reg8);
 
 	cout << "turned on display" << endl;
 	display.turn_ON();

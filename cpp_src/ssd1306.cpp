@@ -2,7 +2,9 @@
 
 
 
-SSD1306::SSD1306(i2c_write_reg8_t i2c_write_reg8):
+SSD1306::SSD1306(disp_size_t size,
+				 i2c_write_reg8_t i2c_write_reg8):
+	size(size),
 	i2c_w_reg8(i2c_write_reg8)
 {
 
