@@ -14,8 +14,10 @@ cpp_obj = $(cpp_src:.cpp=.o)
 c_obj = $(c_src:.c=.o)
 
 CC = g++ 
-CFLAGS = -Wall -pedantic  
-LDFLAGS = 
+CFLAGS = -Wall -pedantic
+
+# using lwiringPi flag for i2c related functionality
+LDFLAGS = -lwiringPi
 EXEC = prog
 
 all :$(EXEC)

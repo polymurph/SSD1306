@@ -1,4 +1,5 @@
 1. connect i2c SDA, SCL, VCC (3.3V) and GND pins
 2. find address with sudo i2cdetect -y 1
    for further info for i2c related things: https://www.waveshare.com/wiki/Raspberry_Pi_Tutorial_Series:_I2C
-
+3. test display with disp_test.sh based on https://stackoverflow.com/questions/42980922/which-commands-do-i-have-to-use-ssd1306-over-i%C2%B2c
+4. i2c docu http://wiringpi.com/reference/i2c-library/
