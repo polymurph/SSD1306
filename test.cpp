@@ -24,7 +24,7 @@ enum{
 static int i2c_handle = 0;
 
 
-void i2c_write_reg8(uint8_t reg, uint8_t data);
+void i2c_write_reg8(uint8_t address, uint8_t reg, uint8_t data);
 
 int main(void)
 {
@@ -36,9 +36,9 @@ int main(void)
 	i2c_handle = wiringPiI2CSetup(I2C_ADDR_SSD1306);
 	// turns off Display	
 	wiringPiI2CWriteReg8(i2c_handle, 0x00, 0xAE);
-	
-
-	static SSD1306 display(SSD1306::SIZE_128x64, i2c_write_reg8);
+			
+				
+	static SSD1306 display(SSD1306::I2C_ADDRESS_0x3C, SSD1306::SIZE_128x64, i2c_write_reg8);
 
 	cout << "turned on display" << endl;
 	display.turn_ON();
@@ -53,7 +53,8 @@ int main(void)
 }
 
 
-void i2c_write_reg8(uint8_t reg, uint8_t data)
+void i2c_write_reg8(uint8_t address, uint8_t reg, uint8_t data)
 {
-	wiringPiI2CWriteReg8(i2c_handle, reg, data);	
+	int handle = wiringPiI2CSetup(address);
+	wiringPiI2CWriteReg8(handle, reg, data);	
 }
