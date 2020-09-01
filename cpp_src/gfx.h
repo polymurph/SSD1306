@@ -1,4 +1,7 @@
+#ifndef _GFX_H_
+#define _GFX_H_
 
+#include <stdint.h>
 
 class GFX
 {
@@ -14,13 +17,14 @@ class GFX
 		set_binary_pixle_t set_b_pix);
 	
 	void clear_display(bool foreground = false);
+
 	void draw_line(uint8_t x0,
 				   uint8_t y0,
 				   uint8_t x1,
 				   uint8_t y1,
 				   uint8_t width = 1,
 				   bool foreground = true);
-if 0
+#if 0
 	void draw_rectancle(uint8_t x0,
 						uint8_t y0,
 						uint8_t x1,
@@ -50,7 +54,8 @@ if 0
 					 bool foreground = true);
 	
 	private:
-	
+
+#if 0	
 	// Declare and Init the font array data (based on: https://www.ccsinfo.com/forum/viewtopic.php?p=34689)
 	static int const Font1[32][7] = {
 	   {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,}   // 0x20, Space
@@ -155,21 +160,28 @@ if 0
 	   {0x0c, 0x02, 0x02, 0x01, 0x02, 0x02, 0x0c,}   // 0x7d, }
 	   {0x08, 0x15, 0x02, 0x00, 0x00, 0x00, 0x00,}   // 0x7e, ~
 	   {0x1f, 0x1f, 0x1f, 0x1f, 0x1f, 0x1f, 0x1f,}   // 0x7f, DEL
-	
-	template struct{
+#endif 
+
+	typedef struct{
 		uint8_t size;
-		uint8_t *pattern;
+		uint8_t* pattern;
 	}kernel_t;
-	
-	static const kernel_t kernel[] = {
-		{3,{0x02,0x07,0x02}},
-		{3,{0x07,0x07,0x07}},
-		{5,{0x04,0x0E,0x1F,0x0E,0x04}},
-		{5,{0x0E,0x1F,0x1F,0x1F,0x0E}},
-		{7,{0x18,0x3C,0x7E,0x7F,0x7E,0x3C,0x18}}
+#if 1	
+	const kernel_t kernel[5] = {
+		{3,static_cast<uint8_t*>({0x02,0x07,0x02})},
+		{3,static_cast<uint8_t*>({0x07,0x07,0x07})},
+		{5,static_cast<uint8_t*>({0x04,0x0E,0x1F,0x0E,0x04})},
+		{5,static_cast<uint8_t*>({0x0E,0x1F,0x1F,0x1F,0x0E})},
+		{7,static_cast<uint8_t*>({0x18,0x3C,0x7E,0x7F,0x7E,0x3C,0x18})}
 	};
+#endif
 	
+	//static const kernel_t kernel[];
+
 	uint8_t n_pixle_row;
 	uint8_t n_pixle_col;
 	set_binary_pixle_t set_bin_pixle;
 };
+
+#endif // _GFX_H_
+

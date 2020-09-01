@@ -1,17 +1,16 @@
-#incldue "gfx.h"
-
+#include "gfx.h"
 
 GFX::GFX(uint8_t n_pixle_row,
 		 uint8_t n_pixle_col,
 		 set_binary_pixle_t set_b_pix) :
 	n_pixle_row(n_pixle_row),
 	n_pixle_col(n_pixle_col),
-	set_bin_pixle()
+	set_bin_pixle(set_b_pix)
 {
 	
 }
 
-void GFX::clear_display(bool foreground = false)
+void GFX::clear_display(bool foreground)
 {
 	uint8_t i;
 	uint8_t j;
@@ -27,12 +26,12 @@ void GFX::draw_line(uint8_t x0,
 				    uint8_t y0,
 					uint8_t x1,
 					uint8_t y1,
-					uint8_t width = 1,
-					bool foreground = true)
+					uint8_t width,
+					bool foreground)
 {
 	uint8_t x;
 	uint8_t y;
-	uint8_t x_start = ();
+	uint8_t x_start;
 	uint8_t x_end;
 	
 	// y = m * x + b
@@ -54,8 +53,8 @@ void GFX::draw_line(uint8_t x0,
 
 void GFX::draw_kernel(uint8_t x,
 					  uint8_t y,
-					  uint8_t size = 1,
-					  bool foreground = true)
+					  uint8_t size,
+					  bool foreground)
 {
 	if(size = 0) return;
 	if(size = 1) {
