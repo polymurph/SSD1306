@@ -1,12 +1,13 @@
 #include "gfx.h"
 
+#if 0
 static const GFX::kernel_t kernel[5] = {
 		{3,static_cast<uint8_t*>({0x02,0x07,0x02})},
 		{3,static_cast<uint8_t*>({0x07,0x07,0x07})},
 		{5,static_cast<uint8_t*>({0x04,0x0E,0x1F,0x0E,0x04})},
 		{5,static_cast<uint8_t*>({0x0E,0x1F,0x1F,0x1F,0x0E})},
 		{7,static_cast<uint8_t*>({0x18,0x3C,0x7E,0x7F,0x7E,0x3C,0x18})}
-
+#endif
 
 GFX::GFX(uint8_t n_pixle_row,
 		 uint8_t n_pixle_col,
@@ -69,7 +70,10 @@ void GFX::draw_kernel(uint8_t x,
 		set_bin_pixle(x,y,foreground);
 		return;
 	}
+
+	set_bin_pixle(x,y,foreground);
 	
+#if 0
 	size -= 2;
 	
 	uint8_t k_size = kernel[size].size;
@@ -87,6 +91,7 @@ void GFX::draw_kernel(uint8_t x,
 			set_bin_pixle(x_start + i, y_start + j, set);
 		}
 	}
+#endif
 }
 		
 

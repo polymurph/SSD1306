@@ -168,7 +168,7 @@ class GFX
 	}kernel_t; 	
 #if 1
 
-	static const kernel_t kernel[5];
+	//static const kernel_t kernel[5];
 /*
 	static const kernel_t kernel[5] = {
 		{3,static_cast<uint8_t*>({0x02,0x07,0x02})},
